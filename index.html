@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Geetiverse | Consulting, Innovation and Learning</title>
+<meta name="description" content="Geetiverse: consulting and innovation initiatives. Personal portfolio and professional profile.">
+<!--
+  SECURITY NOTE: this policy blocks all external scripts, fonts, frames and form posts.
+  If you later connect a form service, analytics or a database, add only that service's address here.
+  Frontend validation can never replace server-side validation: any future form needs a server-side check too.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2332127A'/%3E%3Ctext x='44' y='76' font-family='Georgia,serif' font-size='66' font-weight='700' fill='white' text-anchor='middle'%3EG%3C/text%3E%3Ctext x='80' y='32' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23009B77' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E">
+<script>
+/* Theme: starts from the visitor's system setting. Nothing is stored. */
+document.documentElement.dataset.theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+</script>
+<style>
+/* ===== Design tokens. Brand: Persian indigo #32127A, Persian green #009B77 ===== */
+:root{
+  --indigo:#32127A; --green:#009B77;
+  --bg:#fff; --text:#32127A; --muted:#5b4a8a; --surface:#f3f0fa; --line:#d8d0ec;
+  --accent:#009B77;        /* decorative details */
+  --accent-ui:#007A5E;     /* buttons and links: darker green so text meets contrast guidelines on white */
+  --on-accent:#fff; --link:#007A5E; --focus:#009B77;
+}
+:root[data-theme="dark"]{
+  --bg:#32127A; --text:#fff; --muted:#d9cff0; --surface:#3f1f8c; --line:#5d3cab;
+  --accent:#009B77; --accent-ui:#009B77; --on-accent:#12062e; --link:#3fd9b3; --focus:#3fd9b3;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:70px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--text);font:1.0625rem/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+h1,h2,h3{line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(2rem,6vw,3rem)}
+h2{font-size:clamp(1.5rem,4vw,2rem)}
+h3{font-size:1.1rem}
+p{margin:0 0 1em;max-width:68ch}
+a{color:var(--link)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+/* ===== Header, logo, navigation ===== */
+.site-head{text-align:center;padding:28px 0 0}
+.brand{display:inline-flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;color:var(--text)}
+.logo{position:relative;width:72px;height:72px;border-radius:16px;background:var(--indigo);border:2px solid var(--accent);display:grid;place-items:center}
+.logo .g{font:700 46px/1 Georgia,"Times New Roman",serif;color:#fff;margin:6px 8px 0 0}
+.logo .v{position:absolute;top:5px;right:8px;font:700 20px/1 Arial,sans-serif;color:var(--accent)}
+.wordmark{font-size:1.5rem;font-weight:800}
+.verse{color:var(--accent)}.navbar{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);margin-top:20px}
+.navbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:54px;flex-wrap:wrap}
+.menu-btn{display:inline-block}
+.navbar ul{display:none;list-style:none;margin:0;padding:0 0 10px;flex-direction:column;width:100%;order:3}
+.navbar ul.open{display:flex}.navbar a{display:inline-block;padding:6px 2px;text-decoration:none;font-weight:600;font-size:.95rem;color:var(--text);border-bottom:3px solid transparent}
+.navbar a:hover,.navbar a[aria-current="true"]{border-bottom-color:var(--accent)}
+.menu-btn{display:inline-block}
+.ctrl{font:600 .95rem inherit;font-family:inherit;background:transparent;color:var(--text);border:2px solid var(--text);border-radius:8px;padding:6px 12px;cursor:pointer}
+@media (max-width:760px){
+  .menu-btn{display:inline-block}
+  .navbar ul{display:none;width:100%;flex-direction:column;order:3;padding-bottom:10px}
+  .navbar ul.open{display:flex}
+}
+
+/* ===== Shared components ===== */
+.btn{display:inline-block;font:600 1rem inherit;font-family:inherit;padding:11px 20px;border-radius:8px;border:2px solid var(--accent-ui);background:var(--accent-ui);color:var(--on-accent);text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--text)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+.badge{display:inline-block;font-weight:700;font-size:.85rem;padding:2px 10px;border-radius:6px;margin-bottom:10px;border:2px solid var(--accent)}
+.badge.soon{background:var(--accent);color:#12062e}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:20px 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.card p{margin:0;color:var(--muted)}
+.note{border-left:4px solid var(--accent);padding:4px 0 4px 14px;color:var(--muted)}
+.todo{color:var(--muted);font-style:italic}
+.panel{background:var(--surface);border:2px solid var(--accent);border-radius:10px;padding:18px;margin:16px 0;max-width:720px}
+.panel[hidden]{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:14px 0}
+.chips li{border:1px solid var(--line);border-radius:999px;padding:3px 14px;font-size:.95rem}
+.top-link{display:inline-block;margin-top:10px;font-size:.95rem}
+
+/* ===== Hero and the six cards ===== */
+.hero{text-align:center;padding:48px 0 40px}
+.hero p{margin-left:auto;margin-right:auto}
+.tagline{font-style:italic;font-size:1.2rem;color:var(--muted)}
+.core{font-weight:700;font-size:1.15rem}
+.hero .actions{justify-content:center}
+.cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));padding-bottom:48px}
+.cards a{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;text-decoration:none;color:var(--text);background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:10px;padding:16px}
+.cards a:hover{border-color:var(--accent)}
+.cards svg{grid-row:span 2;width:30px;height:30px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cards strong{font-size:1.05rem}
+.cards span{color:var(--muted);font-size:.95rem}
+
+footer{padding:28px 0;font-size:.93rem;color:var(--muted);text-align:center}
+footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;padding:0;margin:0 0 10px}
+</style>
+</head>
+<body>
+
+<header class="site-head" id="home">
+  <div class="wrap">
+    <!-- LOGO (temporary, made with HTML and CSS). Replace the inner .logo block with an <img> or <svg> later. -->
+    <a class="brand" href="#home" aria-label="Geetiverse, back to home">
+      <span class="logo" aria-hidden="true"><span class="g">G</span><span class="v">V</span></span>
+      <span class="wordmark">Geeti<span class="verse">Verse</span></span>
+    </a>
+  </div>
+  <div class="navbar">
+    <div class="wrap">
+      <button class="ctrl menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navList">Menu</button>
+      <nav aria-label="Main">
+        <ul id="navList">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#consulting">Consulting</a></li>
+          <li><a href="#innovation">Innovation Lab</a></li>
+          <li><a href="#assessments">Assessments</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="ctrl" id="themeBtn" aria-pressed="false">Dark mode</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <!-- HOME -->
+  <div class="hero">
+    <h1>Geetiverse</h1>
+    <p class="tagline">Consulting · Innovation · Learning</p>
+    <p class="core">Explore ideas. Solve problems. Learn by doing.</p>
+    <p>Geetiverse brings together consulting interests, interdisciplinary problem-solving, innovation discovery and practical learning. It is a developing professional and innovation initiative, still taking shape.</p>
+    <div class="actions">
+      <a class="btn" href="#about">About Me</a>
+      <a class="btn ghost" href="#consulting">Geetiverse Consulting</a>
+      <a class="btn ghost" href="#assessments">Interactive Tools &amp; Assessments</a>
+    </div>
+  </div>
+
+  <!-- SIX CARDS. To add a card, copy one <a> and point href at a section id. -->
+  <nav class="cards" aria-label="Sections">
+    <a href="#about"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><strong>01 About Me</strong><span>Professional background and interests</span></a>
+    <a href="#consulting"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2"/></svg><strong>02 Geetiverse Consulting</strong><span>Service areas and how to start a conversation</span></a>
+    <a href="#innovation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10c1 1 1 2 1 3h6c0-1 0-2 1-3a6 6 0 0 0-4-10z"/></svg><strong>03 Innovation Lab</strong><span>An early-stage concept in discovery</span></a>
+    <a href="#assessments"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12l3 3 6-7"/></svg><strong>04 Interactive Tools &amp; Assessments</strong><span>Coming soon</span></a>
+    <a href="#resources"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H3zM21 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z"/></svg><strong>05 Learning &amp; Resources</strong><span>Coming soon</span></a>
+    <a href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><strong>06 Contact</strong><span>Email, LinkedIn and enquiries</span></a>
+  </nav>
+
+  <!-- 01 ABOUT. Replace each [placeholder] with your own text. Do not add details you cannot support. -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p class="todo">[Add professional introduction]</p>
+    <p>My work sits at the meeting point of health informatics, data analytics, business and systems analysis, and interdisciplinary design thinking, with experience in research and university teaching.</p>
+    <div class="grid">
+      <div class="card"><h3>Education and background</h3><p class="todo">[Add education and interdisciplinary background]</p></div>
+      <div class="card"><h3>Health informatics and data analytics</h3><p class="todo">[Add details]</p></div>
+      <div class="card"><h3>Business and systems analysis</h3><p class="todo">[Add details]</p></div>
+      <div class="card"><h3>Interdisciplinary design thinking</h3><p class="todo">[Add details]</p></div>
+      <div class="card"><h3>Research and university teaching</h3><p class="todo">[Add details]</p></div>
+      <div class="card"><h3>Selected projects and interests</h3><p class="todo">[Add selected projects and professional interests]</p></div>
+    </div>
+    <a class="top-link" href="#home">Back to top</a>
+  </section>
+
+  <!-- 02 CONSULTING -->
+  <section id="consulting">
+    <h2>Geetiverse Consulting</h2>
+    <p>These are the areas I am interested in and bring experience to. They describe where I can help think a problem through, not guaranteed outcomes.</p>
+    <div class="grid">
+      <div class="card"><h3>Health informatics and digital health</h3><p>Questions about how health data, systems and care processes connect.</p></div>
+      <div class="card"><h3>Data analytics and evidence-informed decisions</h3><p>Framing a question, examining the data and communicating what it does and does not show.</p></div>
+      <div class="card"><h3>Data quality and governance</h3><p>Understanding the accuracy, completeness and consistency of data, and how it is managed.</p></div>
+      <div class="card"><h3>Business and systems analysis</h3><p>Clarifying needs, requirements and system fit.</p></div>
+      <div class="card"><h3>Workflow analysis and process improvement</h3><p>Mapping how work happens and finding where it can run more smoothly.</p></div>
+      <div class="card"><h3>Interdisciplinary problem-solving</h3><p>Bringing different fields together to support innovation.</p></div>
+    </div>
+    <div class="actions"><a class="btn" href="#contact">Discuss a project</a></div>
+    <a class="top-link" href="#home">Back to top</a>
+  </section>
+
+  <!-- 03 INNOVATION LAB -->
+  <section id="innovation">
+    <span class="badge">Discovery stage</span>
+    <h2>Innovation Lab: Startup Discovery</h2>
+    <p class="note">This is an early-stage concept. Its scope, needs, feasibility and possible partnerships are still being investigated. No product has been built or launched.</p>
+    <div class="grid">
+      <div class="card"><h3>The problem being explored</h3><p class="todo">[Add the problem]</p></div>
+      <div class="card"><h3>Intended audience</h3><p class="todo">[Add the audience]</p></div>
+      <div class="card"><h3>Initial assumptions and hypotheses</h3><p class="todo">[Add assumptions]</p></div>
+      <div class="card"><h3>Questions needing investigation</h3><p class="todo">[Add questions]</p></div>
+      <div class="card"><h3>Potential users, collaborators and partners</h3><p class="todo">[Add who you hope to hear from]</p></div>
+    </div>
+    <div class="actions">
+      <a class="btn" href="#contact">Express interest</a>
+      <button class="btn ghost" data-toggle="panel-questionnaire" aria-expanded="false" aria-controls="panel-questionnaire">Discovery questionnaire: coming soon</button>
+    </div>
+    <div class="panel" id="panel-questionnaire" hidden>
+      <h3>Discovery questionnaire</h3>
+      <p>The questionnaire is not available yet, and no responses are being collected. To share your interest or feedback now, please use the <a href="#contact">contact details</a>.</p>
+      <!-- FUTURE: replace this panel's text with a link to an external form (Google Forms, Tally, Netlify Forms...), plus a short privacy notice. -->
+    </div>
+    <a class="top-link" href="#home">Back to top</a>
+  </section>
+
+  <!-- 04 INTERACTIVE TOOLS & ASSESSMENTS -->
+  <section id="assessments">
+    <span class="badge soon">Coming soon</span>
+    <h2>Interactive Tools &amp; Assessments</h2>
+    <p>Interactive assessments are being developed. Results will initially be calculated in your browser.</p>
+    <p>Future tools may offer scores, explanations, feedback and learning recommendations.</p>
+    <div class="actions"><button class="btn" data-toggle="panel-assess" aria-expanded="false" aria-controls="panel-assess">Explore assessments</button></div>
+    <div class="panel" id="panel-assess" hidden>
+      <h3>Status: coming soon</h3>
+      <p>Interactive assessments are being developed. Results will initially be calculated in your browser. No assessment is available yet.</p>
+      <!-- FUTURE: add quizzes here (or link to assessments.html). Keep each quiz's questions in a JS array, calculate scores locally, and
+           show text with textContent. CSV/JSON export can be built from the local result object. Central storage of results needs a secure
+           backend or serverless function and a privacy notice: never put database keys or tokens in this file. -->
+    </div>
+    <a class="top-link" href="#home">Back to top</a>
+  </section>
+
+  <!-- 05 LEARNING & RESOURCES -->
+  <section id="resources">
+    <span class="badge soon">Coming soon</span>
+    <h2>Learning &amp; Resources</h2>
+    <p>Practical resources in health informatics, data analytics and related topics.</p>
+    <ul class="chips" aria-label="Possible future content">
+      <li>Python and SQL tutorials</li><li>Analytics and visualization</li><li>Health informatics concepts</li><li>Worked examples and case studies</li><li>Guides and downloads</li><li>Interactive lessons</li>
+    </ul>
+    <div class="actions"><button class="btn" data-toggle="panel-resources" aria-expanded="false" aria-controls="panel-resources">Explore resources</button></div>
+    <div class="panel" id="panel-resources" hidden>
+      <h3>Resources are being prepared</h3>
+      <p>Nothing is available to download yet. Tutorials, guides and materials will appear here as they are ready.</p>
+      <!-- FUTURE: add real links only when the files exist, e.g. <a href="resources/sql-basics.html">SQL basics</a> or <a href="files/guide.pdf" download>Guide (PDF)</a>.
+           A separate resources.html page can hold the full library. -->
+    </div>
+    <a class="top-link" href="#home">Back to top</a>
+  </section>
+
+  <!-- 06 CONTACT -->
+  <section id="contact" style="border-bottom:0">
+    <h2>Contact</h2>
+    <p>For professional enquiries, collaboration, consulting opportunities and interest in the discovery initiative.</p>
+    <ul style="list-style:none;padding:0">
+      <li>Professional Gmail: <span id="emailSlot" class="todo">[Add professional Gmail address]</span></li>
+      <li>LinkedIn: <span id="linkedinSlot" class="todo">[Add LinkedIn profile URL]</span></li>
+    </ul>
+    <div class="panel">
+      <h3>Contact form</h3>
+      <p>A contact form is not connected yet. Until then, please use the email or LinkedIn details above once they are added.</p>
+      <!-- FUTURE CONTACT FORM: connect an external service here. For example Netlify Forms (add a <form netlify> in this file, then
+           allow the form action in the Content-Security-Policy), Formspree, or a Google Form link. Always add a privacy notice and
+           validate on the server side as well. Do not display a form that looks like it works when no service is connected. -->
+    </div>
+    <a class="top-link" href="#home">Back to top</a>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <ul>
+      <li><a href="#home">Home</a></li><li><a href="#about">About Me</a></li><li><a href="#consulting">Consulting</a></li>
+      <li><a href="#innovation">Innovation Lab</a></li><li><a href="#assessments">Assessments</a></li><li><a href="#resources">Resources</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+    <p style="margin:0 auto">&copy; <span id="yr"></span> Geetiverse. A developing professional and innovation initiative.</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+/* ===== EDIT HERE: your real contact details. Leave empty to keep showing the placeholders. ===== */
+var CONFIG = {
+  email: "",     /* e.g. "name@gmail.com" */
+  linkedin: ""   /* e.g. "https://www.linkedin.com/in/your-profile" */
+};
+
+/* ---- Contact links: built only from valid values, using safe DOM methods ---- */
+function setLink(slotId, href, label){
+  var slot = document.getElementById(slotId);
+  var a = document.createElement("a");
+  a.href = href; a.textContent = label;
+  if (href.indexOf("https://") === 0){ a.target = "_blank"; a.rel = "noopener noreferrer"; }
+  slot.textContent = ""; slot.className = ""; slot.appendChild(a);
+}
+if (/^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(CONFIG.email)) setLink("emailSlot", "mailto:" + CONFIG.email, CONFIG.email);
+if (/^https:\/\/([a-z]+\.)?linkedin\.com\/[^\s<>"']+$/i.test(CONFIG.linkedin)) setLink("linkedinSlot", CONFIG.linkedin, "LinkedIn profile");
+
+/* ---- Footer year ---- */
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+/* ---- Theme toggle ---- */
+var themeBtn = document.getElementById("themeBtn");
+function syncThemeBtn(){
+  var dark = document.documentElement.dataset.theme === "dark";
+  themeBtn.setAttribute("aria-pressed", String(dark));
+  themeBtn.textContent = dark ? "Light mode" : "Dark mode";
+}
+themeBtn.addEventListener("click", function(){
+  document.documentElement.dataset.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  syncThemeBtn();
+});
+syncThemeBtn();
+
+/* ---- Mobile menu ---- */
+var menuBtn = document.getElementById("menuBtn"), navList = document.getElementById("navList");
+menuBtn.addEventListener("click", function(){
+  var open = navList.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(open));
+});
+navList.addEventListener("click", function(e){
+  if (e.target.tagName === "A"){ navList.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false"); }
+});
+
+/* ---- In-page panels: any button with data-toggle="panel-id" shows or hides that panel ---- */
+Array.prototype.forEach.call(document.querySelectorAll("[data-toggle]"), function(btn){
+  btn.addEventListener("click", function(){
+    var panel = document.getElementById(btn.getAttribute("data-toggle"));
+    panel.hidden = !panel.hidden;
+    btn.setAttribute("aria-expanded", String(!panel.hidden));
+  });
+});
+
+/* ---- Highlight the current section in the navigation ---- */
+if ("IntersectionObserver" in window){
+  var links = {};
+  Array.prototype.forEach.call(navList.querySelectorAll("a"), function(a){ links[a.getAttribute("href").slice(1)] = a; });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){
+        Object.keys(links).forEach(function(k){ links[k].removeAttribute("aria-current"); });
+        if (links[en.target.id]) links[en.target.id].setAttribute("aria-current", "true");
+      }
+    });
+  }, {rootMargin:"-30% 0px -60% 0px"});
+  Object.keys(links).forEach(function(id){ var s = document.getElementById(id); if (s) io.observe(s); });
+}
+</script>
+</body>
+</html>

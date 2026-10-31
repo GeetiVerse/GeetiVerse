@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Geetiverse | Consulting, Innovation and Learning</title>
-<meta name="description" content="Geetiverse: consulting and innovation initiatives. Personal portfolio and professional profile.">
+<title>GeetiVerse | Consulting, Innovation and Learning</title>
+<meta name="description" content="GeetiVerse: consulting and innovation initiatives. Personal portfolio and professional profile.">
 <!--
   SECURITY NOTE: this policy blocks all external scripts, fonts, frames and form posts.
   If you later connect a form service, analytics or a database, add only that service's address here.
   Frontend validation can never replace server-side validation: any future form needs a server-side check too.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data: file:; base-uri 'none'; form-action 'none'"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2332127A'/%3E%3Ctext x='44' y='76' font-family='Georgia,serif' font-size='66' font-weight='700' fill='white' text-anchor='middle'%3EG%3C/text%3E%3Ctext x='80' y='32' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23009B77' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data: file:; base-uri 'none'; form-action 'none'">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2332127A'/%3E%3Ctext x='44' y='76' font-family='Georgia,serif' font-size='66' font-weight='700' fill='white' text-anchor='middle'%3EG%3C/text%3E%3Ctext x='80' y='32' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23009B77' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E">
 <script>
 /* Theme: starts from the visitor's system setting. Nothing is stored. */
 document.documentElement.dataset.theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -48,7 +49,38 @@ a{color:var(--link)}
 .logo .g{font:700 46px/1 Georgia,"Times New Roman",serif;color:#fff;margin:6px 8px 0 0}
 .logo .v{position:absolute;top:5px;right:8px;font:700 20px/1 Arial,sans-serif;color:var(--accent)}
 .wordmark{font-size:1.5rem;font-weight:800}
-.verse{color:var(--accent)}.navbar{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);margin-top:20px}
+.verse{color:var(--accent)}
+section:target h2{color:var(--accent)}
+.topics{display:grid;gap:12px;max-width:720px;margin:18px 0}
+.topic-btn{display:block;width:100%;text-align:left;font-weight:600;font-size:1rem;font-family:inherit;color:var(--text);background:var(--surface);border:2px solid var(--line);border-left:5px solid var(--accent);border-radius:10px;padding:12px 16px;cursor:pointer}
+.topic-btn:hover{border-color:var(--accent)}
+.topic-btn small{display:block;font-weight:400;color:var(--muted)}
+.topic-btn.topic-big{font-size:1.4rem;font-weight:800;padding:16px 18px}
+.topic-btn[aria-expanded="true"]{border-color:var(--accent)}
+.subs{display:grid;gap:8px;margin:2px 0 6px 18px}
+.subs[hidden]{display:none}
+.subs .topic-btn{border-left-width:2px;font-weight:600}
+dialog{max-width:560px;width:calc(100% - 32px);background:var(--bg);color:var(--text);border:2px solid var(--accent);border-radius:12px;padding:24px}
+dialog::backdrop{background:rgba(18,6,46,.65)}
+dialog h3{color:var(--accent);font-size:1.4rem}
+.dlg-crumb{margin:0 0 4px;font-size:.9rem;color:var(--muted)}
+.dlg-q{font-style:italic;font-weight:600}
+.dlg-close{float:right;margin-left:12px}
+dialog{max-width:640px;max-height:90vh;overflow:auto}
+dialog h4{color:var(--accent);margin:18px 0 6px;font-size:1.1rem}
+dialog li{margin-bottom:8px}
+.matrix{border-top:1px solid var(--line);margin-top:8px;padding-top:8px}
+.matrix h5{margin:10px 0 6px;font-size:1rem}
+.mrow{display:grid;grid-template-columns:1fr 130px 52px;gap:8px;align-items:center;font-size:.95rem;margin:4px 0}
+.mrow input{width:100%;accent-color:var(--accent)}
+.mrow output{font-weight:700;text-align:right}
+.mopt{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;margin:12px 0}
+.mopt>input{width:100%;font:inherit;color:var(--text);background:var(--bg);border:2px solid var(--line);border-radius:8px;padding:6px 10px;margin-bottom:6px}
+.mres{margin:8px 0 0;font-weight:700;color:var(--accent)}
+.mtot{font-size:.9rem;color:var(--muted)}
+@media (max-width:520px){.mrow{grid-template-columns:1fr 90px 44px}}
+
+.navbar{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);margin-top:20px}
 .navbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:54px;flex-wrap:wrap}
 .menu-btn{display:inline-block}
 .navbar ul{display:none;list-style:none;margin:0;padding:0 0 10px;flex-direction:column;width:100%;order:3}
@@ -103,13 +135,10 @@ footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;justify-conte
 <header class="site-head" id="home">
   <div class="wrap">
     <!-- LOGO (temporary, made with HTML and CSS). Replace the inner .logo block with an <img> or <svg> later. -->
-    <a class="brand" href="#home" aria-label="Geetiverse, back to home">
-      <span class="logo" aria-hidden="true"><span class="g">G</span><span class="v">V</span></span>
-      <span class="wordmark">Geeti<span class="verse">Verse</span></span>
-    <a class="brand" href="#home" aria-label="Geetiverse, back to home">
-      <img class="logo-img" src="GeetiVerse_Persian.jpg" alt="" width="72" height="72">
-      <span class="wordmark">Geeti<span class="verse">Verse</span></span>
-    </a>
+    <a class="brand" href="#home" aria-label="GeetiVerse, back to home">
+    <img class="logo-img" src="GeetiVerse_Persian.jpg" alt="" width="72" height="72">
+    <span class="wordmark">Geeti<span class="verse">Verse</span></span>
+  </a>
   </div>
   <div class="navbar">
     <div class="wrap">
@@ -117,11 +146,11 @@ footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;justify-conte
       <nav aria-label="Main">
         <ul id="navList">
           <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Me</a></li>
           <li><a href="#consulting">Consulting</a></li>
           <li><a href="#innovation">Innovation Lab</a></li>
-          <li><a href="#assessments">Assessments</a></li>
-          <li><a href="#resources">Resources</a></li>
+          <li><a href="#assessments">Interactive Tools &amp; Assessments</a></li>
+          <li><a href="#resources">Learning Resources</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -135,46 +164,27 @@ footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;justify-conte
 
   <!-- HOME -->
   <div class="hero">
-    <h1>Geetiverse</h1>
+    <h1>GeetiVerse</h1>
     <p class="tagline">Consulting · Innovation · Learning</p>
     <p class="core">Explore ideas. Solve problems. Learn by doing.</p>
-    <p>Geetiverse brings together consulting interests, interdisciplinary problem-solving, innovation discovery and practical learning. It is a developing professional and innovation initiative, still taking shape.</p>
-    <div class="actions">
-      <a class="btn" href="#about">About Me</a>
-      <a class="btn ghost" href="#consulting">Geetiverse Consulting</a>
-      <a class="btn ghost" href="#assessments">Interactive Tools &amp; Assessments</a>
-    </div>
+    <p>GeetiVerse brings together consulting interests, interdisciplinary problem-solving, innovation discovery, and practical learning. It is a developing professional and innovation initiative, still taking shape.</p>
+    <p>Grounded in interdisciplinary systems thinking, data, and human-centered problem-solving, GeetiVerse aims to explore solutions that address meaningful societal challenges.</p>
+    <p>Through consulting, startup discovery, interactive learning, research, games, and shared resources, GeetiVerse provides a space to share and develop my ideas, involve people in exploring and testing solutions, exchange knowledge, and offer consulting support to those seeking it, all with the aim of turning ideas into practical solutions that empower people and create meaningful, sustainable, and resilient impact on communities and society.</p>
   </div>
 
   <!-- SIX CARDS. To add a card, copy one <a> and point href at a section id. -->
   <nav class="cards" aria-label="Sections">
-    <a href="#about"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><strong>01 About Me</strong><span>Professional background and interests</span></a>
-    <a href="#consulting"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2"/></svg><strong>02 Geetiverse Consulting</strong><span>Service areas and how to start a conversation</span></a>
-    <a href="#innovation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10c1 1 1 2 1 3h6c0-1 0-2 1-3a6 6 0 0 0-4-10z"/></svg><strong>03 Innovation Lab</strong><span>An early-stage concept in discovery</span></a>
-    <a href="#assessments"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12l3 3 6-7"/></svg><strong>04 Interactive Tools &amp; Assessments</strong><span>Coming soon</span></a>
-    <a href="#resources"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H3zM21 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z"/></svg><strong>05 Learning &amp; Resources</strong><span>Coming soon</span></a>
-    <a href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><strong>06 Contact</strong><span>Email, LinkedIn and enquiries</span></a>
+    <a href="#consulting"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2"/></svg><strong>Consulting</strong><span>Services, expertise and projects</span></a>
+    <a href="#innovation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10c1 1 1 2 1 3h6c0-1 0-2 1-3a6 6 0 0 0-4-10z"/></svg><strong>Innovation Lab</strong><span>Startup concept and discovery</span></a>
+    <a href="#assessments"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12l3 3 6-7"/></svg><strong>Interactive Tools &amp; Assessments</strong><span>Quizzes, assessments and feedback</span></a>
+    <a href="#resources"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H3zM21 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z"/></svg><strong>Learning Resources</strong><span>Guides, tutorials and materials</span></a>
+    <a href="#about"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><strong>About</strong><span>Your professional profile</span></a>
+    <a href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><strong>Contact</strong><span>Gmail, LinkedIn and inquiries</span></a>
   </nav>
-
-  <!-- 01 ABOUT. Replace each [placeholder] with your own text. Do not add details you cannot support. -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p class="todo">[Add professional introduction]</p>
-    <p>My work sits at the meeting point of health informatics, data analytics, business and systems analysis, and interdisciplinary design thinking, with experience in research and university teaching.</p>
-    <div class="grid">
-      <div class="card"><h3>Education and background</h3><p class="todo">[Add education and interdisciplinary background]</p></div>
-      <div class="card"><h3>Health informatics and data analytics</h3><p class="todo">[Add details]</p></div>
-      <div class="card"><h3>Business and systems analysis</h3><p class="todo">[Add details]</p></div>
-      <div class="card"><h3>Interdisciplinary design thinking</h3><p class="todo">[Add details]</p></div>
-      <div class="card"><h3>Research and university teaching</h3><p class="todo">[Add details]</p></div>
-      <div class="card"><h3>Selected projects and interests</h3><p class="todo">[Add selected projects and professional interests]</p></div>
-    </div>
-    <a class="top-link" href="#home">Back to top</a>
-  </section>
 
   <!-- 02 CONSULTING -->
   <section id="consulting">
-    <h2>Geetiverse Consulting</h2>
+    <h2>Consulting</h2>
     <p>These are the areas I am interested in and bring experience to. They describe where I can help think a problem through, not guaranteed outcomes.</p>
     <div class="grid">
       <div class="card"><h3>Health informatics and digital health</h3><p>Questions about how health data, systems and care processes connect.</p></div>
@@ -193,13 +203,8 @@ footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;justify-conte
     <span class="badge">Discovery stage</span>
     <h2>Innovation Lab: Startup Discovery</h2>
     <p class="note">This is an early-stage concept. Its scope, needs, feasibility and possible partnerships are still being investigated. No product has been built or launched.</p>
-    <div class="grid">
-      <div class="card"><h3>The problem being explored</h3><p class="todo">[Add the problem]</p></div>
-      <div class="card"><h3>Intended audience</h3><p class="todo">[Add the audience]</p></div>
-      <div class="card"><h3>Initial assumptions and hypotheses</h3><p class="todo">[Add assumptions]</p></div>
-      <div class="card"><h3>Questions needing investigation</h3><p class="todo">[Add questions]</p></div>
-      <div class="card"><h3>Potential users, collaborators and partners</h3><p class="todo">[Add who you hope to hear from]</p></div>
-    </div>
+    <h3 style="margin-top:28px">Concept in discovery</h3>
+    <div id="b2bList" class="topics"></div>
     <div class="actions">
       <a class="btn" href="#contact">Express interest</a>
       <button class="btn ghost" data-toggle="panel-questionnaire" aria-expanded="false" aria-controls="panel-questionnaire">Discovery questionnaire: coming soon</button>
@@ -214,36 +219,40 @@ footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;justify-conte
 
   <!-- 04 INTERACTIVE TOOLS & ASSESSMENTS -->
   <section id="assessments">
-    <span class="badge soon">Coming soon</span>
     <h2>Interactive Tools &amp; Assessments</h2>
     <p>Interactive assessments are being developed. Results will initially be calculated in your browser.</p>
     <p>Future tools may offer scores, explanations, feedback and learning recommendations.</p>
-    <div class="actions"><button class="btn" data-toggle="panel-assess" aria-expanded="false" aria-controls="panel-assess">Explore assessments</button></div>
-    <div class="panel" id="panel-assess" hidden>
-      <h3>Status: coming soon</h3>
-      <p>Interactive assessments are being developed. Results will initially be calculated in your browser. No assessment is available yet.</p>
-      <!-- FUTURE: add quizzes here (or link to assessments.html). Keep each quiz's questions in a JS array, calculate scores locally, and
-           show text with textContent. CSV/JSON export can be built from the local result object. Central storage of results needs a secure
-           backend or serverless function and a privacy notice: never put database keys or tokens in this file. -->
-    </div>
+    <div class="actions"><button class="btn" id="assessBtn" aria-expanded="false" aria-controls="assessSubs">Explore assessments</button></div>
+    <div class="subs" id="assessSubs" hidden></div>
     <a class="top-link" href="#home">Back to top</a>
   </section>
 
   <!-- 05 LEARNING & RESOURCES -->
   <section id="resources">
-    <span class="badge soon">Coming soon</span>
     <h2>Learning &amp; Resources</h2>
-    <p>Practical resources in health informatics, data analytics and related topics.</p>
-    <ul class="chips" aria-label="Possible future content">
-      <li>Python and SQL tutorials</li><li>Analytics and visualization</li><li>Health informatics concepts</li><li>Worked examples and case studies</li><li>Guides and downloads</li><li>Interactive lessons</li>
-    </ul>
-    <div class="actions"><button class="btn" data-toggle="panel-resources" aria-expanded="false" aria-controls="panel-resources">Explore resources</button></div>
-    <div class="panel" id="panel-resources" hidden>
-      <h3>Resources are being prepared</h3>
-      <p>Nothing is available to download yet. Tutorials, guides and materials will appear here as they are ready.</p>
-      <!-- FUTURE: add real links only when the files exist, e.g. <a href="resources/sql-basics.html">SQL basics</a> or <a href="files/guide.pdf" download>Guide (PDF)</a>.
-           A separate resources.html page can hold the full library. -->
-    </div>
+    <p>Practical resources in health informatics, data analytics and related topics. Choose a topic to see what it covers.</p>
+    <!-- Topics are built by the script below from the TOPICS list. To add or edit a topic, change that list. -->
+    <div id="topicList" class="topics"></div>
+    <a class="top-link" href="#home">Back to top</a>
+  </section>
+
+  <dialog id="infoDialog" aria-labelledby="dlgTitle">
+    <button class="dlg-close ctrl" id="dlgClose" aria-label="Close window">Close</button>
+    <p class="dlg-crumb" id="dlgCrumb"></p>
+    <h3 id="dlgTitle"></h3>
+    <div id="dlgContent"></div>
+    <p class="todo" id="dlgNote"></p>
+  </dialog>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Ela</h2>
+    <p><strong>Initiator of GeetiVerse</strong><br>Connecting Ideas, Systems, Data &amp; Human Needs</p>
+    <p>My interdisciplinary background spans architectural engineering, design research, data science, and health informatics. I am interested in understanding complex systems and connecting ideas across disciplines to explore meaningful, human-centered solutions.</p>
+    <p>My doctoral research explored how design experts, including engineers and architects, think, communicate, and generate ideas during complex design processes, drawing on biological principles to inspire innovative solutions. This foundation continues to shape my approach to design thinking, interdisciplinary research, and systems-level problem-solving.</p>
+    <p>My work and research bring together systems thinking, human-centered design, analytics, and technology innovation. I view technology as part of a broader socio-technical system shaped by people, organizations, environments, and values.</p>
+    <p>Guided by ethics, equity, and empathy, and driven by enthusiasm for improving people’s quality of life, I am particularly interested in responsible AI that goes beyond technical performance to consider human needs, context, and meaningful human oversight. I explore how data, AI, and systems thinking can support better decision-making and address complex challenges in healthcare and society.</p>
+    <p>Beyond healthcare, I am interested in applying systems thinking and responsible innovation to sustainability, the circular economy, and resilient systems. Driven by curiosity about the deeper principles shaping human and technological systems, I explore how ideas from different disciplines can inform more thoughtful, responsible, and human-centered solutions.</p>
     <a class="top-link" href="#home">Back to top</a>
   </section>
 
@@ -254,6 +263,7 @@ footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;justify-conte
     <ul style="list-style:none;padding:0">
       <li>Professional Gmail: <span id="emailSlot" class="todo">[Add professional Gmail address]</span></li>
       <li>LinkedIn: <span id="linkedinSlot" class="todo">[Add LinkedIn profile URL]</span></li>
+      <li>GitHub: <span id="githubSlot" class="todo">[Add GitHub profile URL]</span></li>
     </ul>
     <div class="panel">
       <h3>Contact form</h3>
@@ -271,10 +281,10 @@ footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;justify-conte
 <footer>
   <div class="wrap">
     <ul>
-      <li><a href="#home">Home</a></li><li><a href="#about">About Me</a></li><li><a href="#consulting">Consulting</a></li>
-      <li><a href="#innovation">Innovation Lab</a></li><li><a href="#assessments">Assessments</a></li><li><a href="#resources">Resources</a></li><li><a href="#contact">Contact</a></li>
+      <li><a href="#home">Home</a></li><li><a href="#consulting">Consulting</a></li><li><a href="#innovation">Innovation Lab</a></li>
+      <li><a href="#assessments">Interactive Tools &amp; Assessments</a></li><li><a href="#resources">Learning Resources</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>
     </ul>
-    <p style="margin:0 auto">&copy; <span id="yr"></span> Geetiverse. A developing professional and innovation initiative.</p>
+    <p style="margin:0 auto">&copy; <span id="yr"></span> GeetiVerse. A developing professional and innovation initiative.</p>
   </div>
 </footer>
 
@@ -282,8 +292,9 @@ footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;justify-conte
 "use strict";
 /* ===== EDIT HERE: your real contact details. Leave empty to keep showing the placeholders. ===== */
 var CONFIG = {
-  email: "",     /* e.g. "name@gmail.com" */
-  linkedin: ""   /* e.g. "https://www.linkedin.com/in/your-profile" */
+  email: "hello.geetiverse@gmail.com",
+  linkedin: "https://www.linkedin.com/in/ela-najafi",
+  github: "https://github.com/GeetiVerse"
 };
 
 /* ---- Contact links: built only from valid values, using safe DOM methods ---- */
@@ -295,6 +306,7 @@ function setLink(slotId, href, label){
   slot.textContent = ""; slot.className = ""; slot.appendChild(a);
 }
 if (/^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(CONFIG.email)) setLink("emailSlot", "mailto:" + CONFIG.email, CONFIG.email);
+if (/^https:\/\/github\.com\/[A-Za-z0-9-]+\/?$/.test(CONFIG.github)) setLink("githubSlot", CONFIG.github, "GeetiVerse (Ela Najafi)");
 if (/^https:\/\/([a-z]+\.)?linkedin\.com\/[^\s<>"']+$/i.test(CONFIG.linkedin)) setLink("linkedinSlot", CONFIG.linkedin, "LinkedIn profile");
 
 /* ---- Footer year ---- */
@@ -331,6 +343,200 @@ Array.prototype.forEach.call(document.querySelectorAll("[data-toggle]"), functio
     btn.setAttribute("aria-expanded", String(!panel.hidden));
   });
 });
+
+
+/* ---- Learning & Resources topics ----
+   Each topic: title, optional tagline, and either items (sub-buttons) or a single body (opens directly).
+   All text is shown with textContent. To add a topic, add an object to this list. */
+var NOTE = "Detailed material for this topic is being prepared.";
+var TOPICS = [
+  {title:"Decision Science & Decision Analytics", tagline:"Understand goals, compare choices, and make better decisions", items:[
+    {title:"Prioritization", q:"What matters most? What should I do first?", body:"Prioritization is about deciding which goals, tasks or needs deserve attention first. It involves clarifying what is important, what is urgent, and what has the greatest effect for the effort required."},
+    {title:"Ranking", q:"In what order should I place the alternatives?", body:"Ranking puts alternatives in order from most to least preferred, using criteria that you choose. It makes your preferences visible and shows where options are close together or far apart."},
+    {title:"Decision-making", q:"Which alternative should I choose?", body:"Decision-making compares the alternatives, weighs their risks, benefits and trade-offs, and arrives at a choice you can explain. It also recognises uncertainty and the role of personal values."},
+    {title:"Optimization", q:"What is the best feasible allocation of resources?", body:"Optimization looks for the best possible use of limited resources, such as time, money or effort, within the constraints that apply. It helps when many combinations are possible and you want the most effective one."}
+  ]},
+  {title:"Navigation", items:[
+    {title:"Understand", q:"Why am I feeling lost?", body:"This step is about naming what feels unclear or unsettled, and noticing what may be behind it, such as change, pressure or competing demands."},
+    {title:"Discover", q:"Who am I, and what matters to me?", body:"Discovery looks inward at your values, interests, strengths and experiences, so that your choices start from what is true for you."},
+    {title:"Explore", q:"What possibilities and alternatives exist?", body:"Exploration widens the view by looking at the paths, options and ideas that are available, before anything is narrowed down."},
+    {title:"Evaluate", q:"Which options align with my values and circumstances?", body:"Evaluation compares the options you have found with your values, resources and real-life situation, to help you choose what fits."}
+  ]},
+  {title:"Sense of Direction", items:[
+    {title:"Purpose clarity", q:"Do I know what matters to me?", body:"Purpose clarity is the sense of what gives your efforts meaning, and what you want your work and life to contribute."},
+    {title:"Identity clarity", q:"Do I understand my interests, values, and strengths?", body:"Identity clarity is knowing what draws you in, what you stand for, and what you do well."},
+    {title:"Goal alignment", q:"Are my goals consistent with my values?", body:"Goal alignment checks whether what you are working toward reflects what you care about, and whether your goals support rather than compete with each other."},
+    {title:"Decision confidence", q:"Can I evaluate alternatives and make decisions?", body:"Decision confidence is the ability to weigh your options, accept some uncertainty, and commit to a choice."},
+    {title:"Action and progress", q:"Am I taking steps and learning from experience?", body:"This looks at whether you are moving forward in practical ways, and adjusting as you learn from what happens."}
+  ]},
+  {title:"Theories", body:"Theories and frameworks behind these topics will be gathered here.", note:"This section is being prepared."},
+  {title:"Guides and downloads", body:"No guides or downloads are available yet. Files will be linked here only when they exist.", note:""}
+];
+var dlg = document.getElementById("infoDialog");
+function add(parent, tag, text, cls){
+  var e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  parent.appendChild(e); return e;
+}
+function safeLink(parent, label, href){            /* only https links are ever created */
+  if (href.indexOf("https://") !== 0) return null;
+  var a = add(parent, "a", label); a.href = href; a.target = "_blank"; a.rel = "noopener noreferrer"; return a;
+}
+function renderBlocks(box, blocks){
+  blocks.forEach(function(b){
+    if (b.p) add(box, "p", b.p);
+    else if (b.h) add(box, "h4", b.h);
+    else if (b.ul){ var u = add(box, "ul"); b.ul.forEach(function(x){ add(u, "li", x); }); }
+    else if (b.ol){ var ol = add(box, "ol"); b.ol.forEach(function(x){ add(ol, "li", x); }); }
+    else if (b.links){ var ul = add(box, "ul"); b.links.forEach(function(l){
+      var li = add(ul, "li"); safeLink(li, l.label, l.href);
+      if (l.desc) li.appendChild(document.createTextNode(". " + l.desc)); }); }
+    else if (b.link){ safeLink(add(box, "p"), b.link.label, b.link.href); }
+    else if (b.matrix) buildMatrix(box);
+  });
+}
+function openInfo(crumb, it, note){
+  document.getElementById("dlgCrumb").textContent = crumb;
+  document.getElementById("dlgTitle").textContent = it.title;
+  var box = document.getElementById("dlgContent"); box.textContent = "";
+  if (it.q) add(box, "p", it.q, "dlg-q");
+  if (it.body) add(box, "p", it.body);
+  if (it.blocks) renderBlocks(box, it.blocks);
+  document.getElementById("dlgNote").textContent = note || "";
+  if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
+}
+function topicButton(title, tagline){
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "topic-btn";
+  b.appendChild(document.createTextNode(title));
+  if (tagline) add(b, "small", tagline);
+  return b;
+}
+/* Builds buttons from a list. An item with "items" opens a group of sub-buttons (any depth); other items open the window. */
+function renderItems(box, items, crumb, pid){
+  items.forEach(function(it, k){
+    var b = topicButton(it.title, it.q || it.tagline);
+    if (it.big) b.classList.add("topic-big");
+    box.appendChild(b);
+    if (it.items){
+      var sub = add(box, "div", null, "subs"); sub.id = pid + "-" + k; sub.hidden = true;
+      b.setAttribute("aria-expanded", "false"); b.setAttribute("aria-controls", sub.id);
+      b.addEventListener("click", function(){
+        if (it.body || it.blocks){                       /* opens a window AND shows its sub-buttons */
+          sub.hidden = false; b.setAttribute("aria-expanded", "true"); openInfo(crumb, it, it.note === undefined ? NOTE : it.note);
+        } else { sub.hidden = !sub.hidden; b.setAttribute("aria-expanded", String(!sub.hidden)); }
+      });
+      renderItems(sub, it.items, crumb + " / " + it.title, sub.id);
+    } else {
+      b.setAttribute("aria-haspopup", "dialog");
+      b.addEventListener("click", function(){ openInfo(crumb, it, it.note === undefined ? NOTE : it.note); });
+    }
+  });
+}
+renderItems(document.getElementById("topicList"), TOPICS, "Learning & Resources", "t");
+
+/* ---- Interactive Tools & Assessments: subtopics ----
+   Links lead to published measures. They were supplied by the site owner: check each one still works before relying on it. */
+var SAFE = "These links lead to published measures and research. They are not diagnostic tools and this is not clinical advice. If you are struggling, please speak with a health professional.";
+var DS = TOPICS[0].items;
+var ASSESS = [
+  {title:"Meaning", note:SAFE, blocks:[
+    {p:"To understand this scientifically and potentially assess it systematically, we would start with three measures:"},
+    {ol:["MLQ: Is meaning present, or are you searching for it?","Self-Concept Clarity Scale: How clear and consistent is your sense of identity?","WHO-5: How is your overall well-being?"]},
+    {h:"Accessing tests"},
+    {links:[
+      {label:"Meaning in Life Questionnaire (University of Pennsylvania)", href:"https://ppc.sas.upenn.edu/node/213", desc:"Meaning and purpose. A 10-item measure of whether you experience meaning and whether you are searching for it"},
+      {label:"MAPS research paper and supplementary materials", href:"https://pmc.ncbi.nlm.nih.gov/articles/PMC10548553/", desc:"Crisis of meaning. The research describes a validated 23-item instrument covering meaning and sources of purpose"},
+      {label:"WHO-5", href:"https://www.who.int/publications/m/item/WHO-UCN-MSD-MHE-2024.01", desc:"General well-being. A brief measure of well-being over the past two weeks"},
+      {label:"CAMH clinical screening tools", href:"https://www.camh.ca/en/professionals/treating-conditions-and-disorders/anxiety-disorders/anxiety---clinical-tools", desc:"Depression and anxiety, including PHQ-9 and GAD-7"},
+      {label:"Original Self-Concept Clarity research", href:"https://doi.org/10.1037/0022-3514.70.1.141", desc:"Identity clarity"}
+    ]}
+  ]},
+  {title:"Purpose", note:SAFE, blocks:[
+    {h:"Purpose in Life subscale (Carol Ryff)"},
+    {p:"Direct match. Measures purpose, intentionality, and having goals that give life direction as part of a broader psychological well-being framework."},
+    {p:"Best for: general life direction, not just career decisions."},
+    {link:{label:"Review of purpose-in-life measures", href:"https://pmc.ncbi.nlm.nih.gov/articles/PMC11056839/"}},
+    {h:"Meaning in Life Questionnaire, MLQ (Michael Steger and colleagues)"},
+    {p:"Measures two dimensions: presence of meaning and search for meaning. A person can be actively searching without necessarily feeling that life is meaningless."},
+    {p:"Best for: distinguishing a lack of meaning from an active search for purpose."},
+    {link:{label:"Researcher and measurement resources", href:"https://www.michaelfsteger.com/"}},
+    {h:"Brief Purpose in Life measure for emerging adults"},
+    {p:"A validated brief measure includes statements about having a direction, knowing which direction to follow, and whether future plans match one’s interests and values."},
+    {p:"Best for: a concise assessment of direction and value alignment. Its original validation population was emerging adults, so generalizing to other age groups requires caution."},
+    {link:{label:"Read the validation study", href:"https://pmc.ncbi.nlm.nih.gov/articles/PMC4779362/"}},
+    {h:"Career Decision Self-Efficacy Scale (CDSE)"},
+    {p:"Measures confidence in five career-decision tasks: self-appraisal, gathering occupational information, selecting goals, planning, and problem-solving."},
+    {p:"Best for: identifying whether career uncertainty comes from low confidence in making or implementing decisions. The scale is copyrighted and requires appropriate access or licensing."},
+    {link:{label:"Instrument details and scoring information", href:"https://www.sralab.org/rehabilitation-measures/career-decision-self-efficacy-scale"}}
+  ]},
+  {title:"Prioritization", q:DS[0].q, body:DS[0].body, note:"", blocks:[
+    {h:"A practical prioritization model"},
+    {p:"Weighted decision matrix: give each criterion a weight for how much it matters, score each option against every criterion, and compare the weighted totals."},
+    {h:"Interactive decision matrix"},
+    {p:"Adjust the weights and scores. Everything is calculated in your browser, and nothing is sent or saved."},
+    {matrix:true}
+  ]},
+  DS[1], DS[2], DS[3]
+];
+var CRIT = [["Alignment with values",30],["Expected impact",25],["Feasibility",20],["Long-term potential",15],["Financial practicality",10]];
+function buildMatrix(box){
+  var wrap = add(box, "div", null, "matrix"), wIn = [], wOut = [], opts = [];
+  add(wrap, "h5", "Weights (0% to 50%)");
+  CRIT.forEach(function(c){
+    var row = add(wrap, "label", null, "mrow"); add(row, "span", c[0]);
+    var r = add(row, "input"); r.type = "range"; r.min = 0; r.max = 50; r.step = 5; r.value = c[1];
+    wOut.push(add(row, "output", c[1] + "%")); wIn.push(r); r.addEventListener("input", update);
+  });
+  var tot = add(wrap, "p", null, "mtot");
+  add(wrap, "h5", "Scores (0 to 10)");
+  ["Option A", "Option B", "Option C"].forEach(function(name){
+    var card = add(wrap, "div", null, "mopt");
+    var nm = add(card, "input"); nm.type = "text"; nm.value = name; nm.maxLength = 30; nm.setAttribute("aria-label", "Option name");
+    var sc = [];
+    CRIT.forEach(function(c){
+      var row = add(card, "label", null, "mrow"); add(row, "span", c[0]);
+      var r = add(row, "input"); r.type = "range"; r.min = 0; r.max = 10; r.step = 1; r.value = 5;
+      var o = add(row, "output", "5");
+      r.addEventListener("input", function(){ o.textContent = r.value; update(); }); sc.push(r);
+    });
+    var res = add(card, "p", null, "mres"); res.setAttribute("aria-live", "polite");
+    nm.addEventListener("input", update); opts.push({nm:nm, sc:sc, res:res});
+  });
+  function update(){
+    var w = wIn.map(function(r, k){ wOut[k].textContent = r.value + "%"; return +r.value; });
+    var sum = w.reduce(function(a, b){ return a + b; }, 0);
+    tot.textContent = "Total weight: " + sum + "%. Scores use each weight relative to this total.";
+    opts.forEach(function(o){
+      var name = o.nm.value.trim() || "Option";
+      if (!sum){ o.res.textContent = name + ": set at least one weight above 0%."; return; }
+      var t = 0; o.sc.forEach(function(r, k){ t += w[k] * (+r.value); });
+      o.res.textContent = "Weighted score for " + name + ": " + (t / sum).toFixed(1) + " out of 10";
+    });
+  }
+  update();
+}
+/* ---- Innovation Lab: B2B concept (discovery stage). Replace the [bracketed] text with your own, sourced wording. ---- */
+var B2B_NOTE = "Discovery stage: this is an early concept. No product has been built, no service is offered, and no partnerships or results are claimed. If you need help now, call or text 9-8-8 (Canada’s Suicide Crisis Helpline), or call 911 in an emergency.";
+var B2B = [
+  {title:"B2B (Bridge to Belonging)", big:true, note:B2B_NOTE, blocks:[
+    {h:"AI-Driven Triage and Referral for Newcomer Mental Health in Ontario: Addressing Anxiety and Depression"},
+    {ul:["an AI-enabled triage system concept for anxiety and depression among newcomers to Ontario, incorporating social determinants of health, privacy, data governance, accessibility, equity, and human oversight."]}
+  ], items:[
+    {title:"Problem", note:B2B_NOTE, body:"This concept explores how newcomers in Ontario who experience anxiety or depression might be better supported in finding the right care at the right time. [Add the specific problem you want to investigate, with sources for any statistics.]"},
+    {title:"Target", note:B2B_NOTE, body:"[Add the intended audience.] Groups worth considering include newcomers themselves, the clinicians and services that see them, and community organisations that support settlement."},
+    {title:"Initial assumptions", note:B2B_NOTE, body:"Assumptions are beliefs that still need to be tested, not findings. [Add your assumptions, phrased so that each one can be checked, for example through interviews or a small pilot.]"},
+    {title:"Question", note:B2B_NOTE, body:"[Add the questions that need investigation.] Examples might include what newcomers need, what is feasible, and what would make an AI-supported triage and referral approach safe, fair and acceptable."},
+    {title:"Partners", note:B2B_NOTE, body:"[Add potential partners.] Potential users, collaborators and partners are welcome to get in touch through the Contact section. No partnerships have been agreed."}
+  ]}
+];
+renderItems(document.getElementById("b2bList"), B2B, "Innovation Lab", "b");
+var aBtn = document.getElementById("assessBtn"), aBox = document.getElementById("assessSubs");
+renderItems(aBox, ASSESS, "Interactive Tools & Assessments", "a");
+aBtn.addEventListener("click", function(){ aBox.hidden = !aBox.hidden; aBtn.setAttribute("aria-expanded", String(!aBox.hidden)); });
+document.getElementById("dlgClose").addEventListener("click", function(){ dlg.close(); });
+dlg.addEventListener("click", function(e){ if (e.target === dlg) dlg.close(); });  /* click outside to close */
 
 /* ---- Highlight the current section in the navigation ---- */
 if ("IntersectionObserver" in window){

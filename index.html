@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,11 +24,11 @@ document.documentElement.dataset.theme = matchMedia("(prefers-color-scheme: dark
   --bg:#fff; --text:#32127A; --muted:#5b4a8a; --surface:#f3f0fa; --line:#d8d0ec;
   --accent:#009B77;        /* decorative details */
   --accent-ui:#007A5E;     /* buttons and links: darker green so text meets contrast guidelines on white */
-  --on-accent:#fff; --link:#007A5E; --focus:#009B77;
+  --on-accent:#fff; --link:#007A5E; --focus:#009B77; --red:#CC3333; --red-text:#CC3333; --rose:#FE28A2;
 }
 :root[data-theme="dark"]{
   --bg:#32127A; --text:#fff; --muted:#d9cff0; --surface:#3f1f8c; --line:#5d3cab;
-  --accent:#009B77; --accent-ui:#009B77; --on-accent:#12062e; --link:#3fd9b3; --focus:#3fd9b3;
+  --accent:#009B77; --accent-ui:#009B77; --on-accent:#12062e; --link:#3fd9b3; --focus:#3fd9b3; --red:#CC3333; --red-text:#ff9a9a; --rose:#FE28A2;
 }
 *{box-sizing:border-box}
 html{scroll-padding-top:70px}
@@ -56,7 +57,15 @@ section:target h2{color:var(--accent)}
 .topic-btn:hover{border-color:var(--accent)}
 .topic-btn small{display:block;font-weight:400;color:var(--muted)}
 .topic-btn.topic-big{font-size:1.4rem;font-weight:800;padding:16px 18px}
-.topic-btn[aria-expanded="true"]{border-color:var(--accent)}
+.topic-btn[aria-expanded="true"]{border-color:var(--red);border-left-color:var(--red)}
+.topic-btn.selected{border-color:var(--red);border-left-color:var(--red);color:var(--red-text)}
+/* the section you jump to gets a Persian red border */
+section:target{border:3px solid var(--red)!important;border-radius:14px;padding:53px 12px;margin:0 -15px}
+/* hovering a section: Persian rose border (placed after :target so it wins while the pointer is over it) */
+section:hover{border:3px solid var(--rose)!important;border-radius:14px;padding:53px 12px;margin:0 -15px}
+/* B2B and BHH: click once = Persian rose border, click again = back to the normal colour */
+.topic-btn.concept[aria-expanded="true"]{border-color:var(--line);border-left-color:var(--accent)}
+.topic-btn.concept.rose{border-color:var(--rose);border-left-color:var(--rose)}
 .subs{display:grid;gap:8px;margin:2px 0 6px 18px}
 .subs[hidden]{display:none}
 .subs .topic-btn{border-left-width:2px;font-weight:600}
@@ -421,16 +430,21 @@ function renderItems(box, items, crumb, pid){
     box.appendChild(b);
     if (it.items){
       var sub = add(box, "div", null, "subs"); sub.id = pid + "-" + k; sub.hidden = true;
+      if (it.body || it.blocks) b.classList.add("concept");
       b.setAttribute("aria-expanded", "false"); b.setAttribute("aria-controls", sub.id);
       b.addEventListener("click", function(){
         if (it.body || it.blocks){                       /* opens a window AND shows its sub-buttons */
-          sub.hidden = false; b.setAttribute("aria-expanded", "true"); openInfo(crumb, it, it.note === undefined ? NOTE : it.note);
+          sub.hidden = false; b.setAttribute("aria-expanded", "true"); b.classList.toggle("rose"); openInfo(crumb, it, it.note === undefined ? NOTE : it.note);
         } else { sub.hidden = !sub.hidden; b.setAttribute("aria-expanded", String(!sub.hidden)); }
       });
       renderItems(sub, it.items, crumb + " / " + it.title, sub.id);
     } else {
       b.setAttribute("aria-haspopup", "dialog");
-      b.addEventListener("click", function(){ openInfo(crumb, it, it.note === undefined ? NOTE : it.note); });
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(box.children, function(c){ c.classList.remove("selected"); });
+        b.classList.add("selected");
+        openInfo(crumb, it, it.note === undefined ? NOTE : it.note);
+      });
     }
   });
 }
@@ -531,6 +545,16 @@ var B2B = [
     {title:"Partners", note:B2B_NOTE, body:"[Add potential partners.] Potential users, collaborators and partners are welcome to get in touch through the Contact section. No partnerships have been agreed."}
   ]}
 ];
+var BHH_NOTE = "Discovery stage: this is an early concept. No product has been built and no service is offered. It does not give medical advice or diagnose any condition. If you have symptoms that worry you, speak with a health professional. If you think you may be having a medical emergency, call 911.";
+B2B.push({title:"BHH (Body Hears Heart)", big:true, note:BHH_NOTE,
+  body:"BHH (Body Hears Heart) explores the connection between bodily awareness and heart health. It encourages people to listen to their bodies, recognize potential symptoms and warning signs of heart conditions, and become more aware of changes that may warrant medical attention.",
+  items:[
+    {title:"Problem", note:BHH_NOTE, body:"This concept explores how people might notice, and act on, changes in their bodies that could relate to heart health. [Add the specific problem you want to investigate, with sources for any statistics.]"},
+    {title:"Target", note:BHH_NOTE, body:"[Add the intended audience.] Groups worth considering include people who want to understand their own bodies better, the people who support them, and health professionals."},
+    {title:"Initial assumptions", note:BHH_NOTE, body:"Assumptions are beliefs that still need to be tested, not findings. [Add your assumptions, phrased so that each one can be checked.]"},
+    {title:"Question", note:BHH_NOTE, body:"[Add the questions that need investigation.] Examples might include what people already notice about their bodies, what would help them act on warning signs, and how to keep the information accurate and safe."},
+    {title:"Partners", note:BHH_NOTE, body:"[Add potential partners.] Potential users, collaborators and partners are welcome to get in touch through the Contact section. No partnerships have been agreed."}
+  ]});
 renderItems(document.getElementById("b2bList"), B2B, "Innovation Lab", "b");
 var aBtn = document.getElementById("assessBtn"), aBox = document.getElementById("assessSubs");
 renderItems(aBox, ASSESS, "Interactive Tools & Assessments", "a");
